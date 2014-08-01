@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
-import scrapy
+import locale
 
-from scrapy.items import ScrapyDeudoresItem as Item
+import scrapy
+from scrapy_deudores.items import ScrapyDeudoresItem as Item
+from scrapy.http import Request
 
 locale.setlocale(locale.LC_ALL, "en_US.UTF8")
 
@@ -10,14 +12,9 @@ class DeudorSpider(scrapy.Spider):
     allowed_domains = ["pisaq.minjus.gob.pe"]
     max_id = 1000
 
-    start_urls = (
-            'http://pisaq.minjus.gob.pe:8080/sisca_web/DeudoresWebAction_verDeudorWeb.action?deudor.id=',
-    )
-
     def start_requests(self):
         for i in range(self.max_id):
-            yield
-            Request('http://pisaq.minjus.gob.pe:8080/sisca_web/DeudoresWebAction_verDeudorWeb.action?deudor.id=' + str(i),
+            yield Request('http://pisaq.minjus.gob.pe:8080/sisca_web/DeudoresWebAction_verDeudorWeb.action?deudor.id=' + str(i),
                     callback=self.parse)
 
     def parse(self, response):
@@ -42,11 +39,11 @@ class DeudorSpider(scrapy.Spider):
         item['solidaria'] = sele[32].strip()
 
         sele = sel("//td[@class='formularioColumna']/div[@align='center']/text()").extract()
-        item['reparacion_civil'] = locale.atoif(sele[0])
-        item['intereses'] = locale.atoif(sele[1])
-        item['monto_total'] = locale.atoif(sele[2])
-        item['pagos_realizados'] = locale.atoif(sele[3])
-        item['pagos_pendientes'] = locale.atoif(sele[4])
+        item['reparacion_civil'] = locale.atof(sele[0])
+        item['intereses'] = locale.atof(sele[1])
+        item['monto_total'] = locale.atof(sele[2])
+        item['pagos_realizados'] = locale.atof(sele[3])
+        item['pagos_pendientes'] = locale.atof(sele[4])
         item['url'] = response.url
 
         yield item
