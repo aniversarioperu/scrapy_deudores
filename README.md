@@ -4,7 +4,7 @@ El buscador de deudores al Estado peruano no es muy amigable:
 <http://pisaq.minjus.gob.pe:8080/sisca_web/DeudoresWebAction_verWeb>
 
 Con este software te puedes bajar toda la información de todos los deudores.
-El minjus tiene organizada la info por registros. Cada registro tiene un número
+El minjus tiene organizada la info por registros. Cada registro tiene un 
 ``id`` numérico que se incrementa a partir del ``1``.
 
 Si hay un deudor con varias deudas entonces tendrá varios números ``id``. Con
