@@ -7,6 +7,7 @@ from scrapy.http import Request
 
 locale.setlocale(locale.LC_ALL, "en_US.UTF8")
 
+
 class DeudorSpider(scrapy.Spider):
     name = "deudor"
     allowed_domains = ["pisaq.minjus.gob.pe"]
@@ -17,8 +18,9 @@ class DeudorSpider(scrapy.Spider):
 
     def start_requests(self):
         for i in range(self.start_id, self.end_id + 1):
-            yield Request('http://pisaq.minjus.gob.pe:8080/sisca_web/DeudoresWebAction_verDeudorWeb.action?deudor.id=' + str(i),
-                    callback=self.parse)
+            url = 'http://pisaq.minjus.gob.pe:8080/sisca_web/'
+            url += 'DeudoresWebAction_verDeudorWeb.action?deudor.id=' + str(i)
+            yield Request(url, callback=self.parse)
 
     def parse(self, response):
         item = Item()
