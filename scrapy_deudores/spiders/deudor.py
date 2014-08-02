@@ -10,10 +10,13 @@ locale.setlocale(locale.LC_ALL, "en_US.UTF8")
 class DeudorSpider(scrapy.Spider):
     name = "deudor"
     allowed_domains = ["pisaq.minjus.gob.pe"]
-    max_id = 8000
+
+    def __init__(self, start_id='', end_id=''):
+        self.start_id = int(start_id)
+        self.end_id = int(end_id)
 
     def start_requests(self):
-        for i in range(self.max_id):
+        for i in range(self.start_id, self.end_id + 1):
             yield Request('http://pisaq.minjus.gob.pe:8080/sisca_web/DeudoresWebAction_verDeudorWeb.action?deudor.id=' + str(i),
                     callback=self.parse)
 
