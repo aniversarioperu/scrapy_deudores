@@ -22,3 +22,26 @@ el número ``id`` se puede acceder a la cartilla del deudor. Ejemplo para el
 * Es necesario ingresar el rango de ``ids`` a descargar. Para descargar los 
 registros del 1 al 100 hacer lo siguiente:  
     ``scrapy crawl deudor -a start_id=1 -a end_id=100 -o deudores.json``
+* El resultado será un objeto JSON similar a este:
+
+```json
+{
+    "fecha_ejecutoria": "",
+    "pagos_pendientes": 1000000,
+    "pagos_realizados": 0,
+    "url": "http://pisaq.minjus.gob.pe:8080/sisca_web/DeudoresWebAction_verDeudorWeb.action?deudor.id=317",
+    "nombres": "Vladimiro",
+    "dni": "09296012",
+    "monto_total": 1000000,
+    "juzgado": "1er JPLT -2do SPL",
+    "apellidos": "Montesinos Torres",
+    "solidaria": "SI",
+    "entidad_agraviada": "",
+    "intereses": 0,
+    "delito": "Defraudación Tributaria, Ocultamiento de Ingresos, Utilización de Gastos no Reales y Crédito Fiscal Inexistente",
+    "reparacion_civil": 1000000,
+    "fecha_sentencia": "13/05/2010",
+    "domicilio": "Calle Castro Iglesias 141 Urb. Aurora. Miraflores - Lima",
+    "expediente": "13-2003 -41-2004"
+}
+```
