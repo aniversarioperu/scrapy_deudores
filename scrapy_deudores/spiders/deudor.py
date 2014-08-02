@@ -10,7 +10,7 @@ locale.setlocale(locale.LC_ALL, "en_US.UTF8")
 class DeudorSpider(scrapy.Spider):
     name = "deudor"
     allowed_domains = ["pisaq.minjus.gob.pe"]
-    max_id = 2000
+    max_id = 8000
 
     def start_requests(self):
         for i in range(self.max_id):
