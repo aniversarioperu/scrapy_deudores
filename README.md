@@ -19,6 +19,7 @@ el número ``id`` se puede acceder a la cartilla del deudor. Ejemplo para el
 ## Procedimiento
 
 * Descarga el software: ``git clone https://github.com/aniversarioperu/scrapy_deudores.git``
+* Instalar los requisitos: ``pip install -r requirements.txt``
 * Es necesario ingresar el rango de ``ids`` a descargar. Para descargar los 
 registros del 1 al 100 hacer lo siguiente:  
     ``scrapy crawl deudor -a start_id=1 -a end_id=100 -o deudores.json``
